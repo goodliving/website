@@ -5,17 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>404 Page not found</title>
-  <meta property="og:title" content="404 Page not found" />
-  <meta name="twitter:title" content="404 Page not found" />
+  <title>Drone的安装使用</title>
+  <meta property="og:title" content="Drone的安装使用" />
+  <meta name="twitter:title" content="Drone的安装使用" />
+  <meta name="description" content="概述 Drone是一个轻量级，为容器构建的强大的持续交付平台。Drone通过Docker镜像的方式来实现打包和发布。
+安装 Drone的官方推荐使用docker-compose来安装。下面配置是官方的一个安装实例
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8 ports: - 80:8000 volumes: - /var/lib/drone:/var/lib/drone/ restart: always environment: - DRONE_OPEN=true - DRONE_HOST=${DRONE_HOST} - DRONE_GITHUB=true - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT} - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET} - DRONE_SECRET=${DRONE_SECRET} drone-agent: image: drone/drone:0.8 command: agent restart: always depends_on: - drone-server volumes: - /var/run/docker.sock:/var/run/docker.sock environment: - DRONE_SERVER=drone-server:9000 - DRONE_SECRET=${DRONE_SECRET}  Drone可以整合多个版本控制系统，使用环境变量来配置，如gitea，可以查看gitea配置来获取安装帮助。
+以下是个人的安装配置，其中使用mysql数据来代替默认的sqlite
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8.5 ports: - 8080:8000 - 9000 volumes: - /var/lib/drone:/var/lib/drone/ restart: always depends_on: - db environment: - DRONE_OPEN=true - DRONE_HOST=http://192.">
+  <meta property="og:description" content="概述 Drone是一个轻量级，为容器构建的强大的持续交付平台。Drone通过Docker镜像的方式来实现打包和发布。
+安装 Drone的官方推荐使用docker-compose来安装。下面配置是官方的一个安装实例
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8 ports: - 80:8000 volumes: - /var/lib/drone:/var/lib/drone/ restart: always environment: - DRONE_OPEN=true - DRONE_HOST=${DRONE_HOST} - DRONE_GITHUB=true - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT} - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET} - DRONE_SECRET=${DRONE_SECRET} drone-agent: image: drone/drone:0.8 command: agent restart: always depends_on: - drone-server volumes: - /var/run/docker.sock:/var/run/docker.sock environment: - DRONE_SERVER=drone-server:9000 - DRONE_SECRET=${DRONE_SECRET}  Drone可以整合多个版本控制系统，使用环境变量来配置，如gitea，可以查看gitea配置来获取安装帮助。
+以下是个人的安装配置，其中使用mysql数据来代替默认的sqlite
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8.5 ports: - 8080:8000 - 9000 volumes: - /var/lib/drone:/var/lib/drone/ restart: always depends_on: - db environment: - DRONE_OPEN=true - DRONE_HOST=http://192.">
+  <meta name="twitter:description" content="概述 Drone是一个轻量级，为容器构建的强大的持续交付平台。Drone通过Docker镜像的方式来实现打包和发布。
+安装 Drone的官方推荐使用docker-compose来安装。下面配置是官方的一个安装实例
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8 ports: - 80:8000 volumes: - …">
   <meta name="author" content=""/>
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://192.168.200.20:8080/" />
+  <meta property="og:url" content="http://192.168.200.20:8080/post/drone/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cooper&#39;s Blog" />
 
   <meta name="generator" content="Hugo 0.41" />
-  <link rel="canonical" href="http://192.168.200.20:8080/" />
+  <link rel="canonical" href="http://192.168.200.20:8080/post/drone/" />
   <link rel="alternate" href="http://192.168.200.20:8080/index.xml" type="application/rss+xml" title="Cooper&#39;s Blog">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -151,14 +164,197 @@ autocomplete('#aa-search-input',
   </div>
 </div>
     
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
     
-  <div role="main" class="container main-content">
-    <div class="text-center">
-      <h1>Whoops, this page doesn&#39;t exist. Move along. (404 error)</h1>
-      <br/>
-      <img src="http://192.168.200.20:8080//img/404-southpark.jpg" />
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Drone的安装使用</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 15, 2018
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<h3 id="概述">概述</h3>
+
+<p><a href="http://docs.drone.io/zh/installation/">Drone</a>是一个轻量级，为容器构建的强大的持续交付平台。<code>Drone</code>通过<code>Docker</code>镜像的方式来实现打包和发布。</p>
+
+<h3 id="安装">安装</h3>
+
+<p><code>Drone</code>的官方推荐使用<code>docker-compose</code>来安装。下面配置是官方的一个安装实例</p>
+
+<pre><code class="language-yaml">version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:0.8
+
+    ports:
+      - 80:8000
+    volumes:
+      - /var/lib/drone:/var/lib/drone/
+    restart: always
+    environment:
+      - DRONE_OPEN=true
+      - DRONE_HOST=${DRONE_HOST}
+      - DRONE_GITHUB=true
+      - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT}
+      - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET}
+      - DRONE_SECRET=${DRONE_SECRET}
+
+  drone-agent:
+    image: drone/drone:0.8
+
+    command: agent
+    restart: always
+    depends_on:
+      - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=${DRONE_SECRET}
+</code></pre>
+
+<p><code>Drone</code>可以整合多个版本控制系统，使用环境变量来配置，如<code>gitea</code>，可以查看<a href="http://docs.drone.io/install-for-gitea/">gitea配置</a>来获取安装帮助。</p>
+
+<p>以下是个人的安装配置，其中使用<code>mysql</code>数据来代替默认的<code>sqlite</code></p>
+
+<pre><code class="language-yaml">version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:0.8.5
+
+    ports:
+      - 8080:8000
+      - 9000
+    volumes:
+      - /var/lib/drone:/var/lib/drone/
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - DRONE_OPEN=true
+      - DRONE_HOST=http://192.168.200.157:8080
+      - DRONE_GITEA=true
+      - DRONE_GITEA_URL=http://192.168.200.157:3000
+      - DRONE_SECRET=x25WM5TaTXGK5vQ0kgv
+      - DRONE_DATABASE_DRIVER=mysql
+      - DRONE_DATABASE_DATASOURCE=root:86LzseBTczbp@tcp(db:3306)/drone?parseTime=true
+
+  drone-agent:
+    image: drone/agent:0.8.5
+
+    restart: always
+    depends_on:
+      - drone-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=x25WM5TaTXGK5vQ0kgv
+
+  db:
+    image: bitnami/mariadb
+    ports:
+      - 3306
+    restart: always
+    volumes:
+      - ./mariadb:/bitnami
+    environment:
+      - MARIADB_ROOT_PASSWORD=86LzseBTczbp
+      - MARIADB_DATABASE=drone
+</code></pre>
+
+<blockquote>
+<p><strong>将<code>gitea</code>的地址替换成自己安装的地址，其他参数可以配置成自己需要的</strong></p>
+</blockquote>
+
+<p>通过<code>docker-compose ps</code>来查看启动结果，出现以下表示一切正常</p>
+
+<pre><code class="language-shell">[root@nodejs-200 drone]# docker-compose ps
+        Name                    Command                State                                    Ports
+-----------------------------------------------------------------------------------------------------------------------------------
+drone_db_1             /app-entrypoint.sh /run.sh   Up             0.0.0.0:32777-&gt;3306/tcp
+drone_drone-agent_1    /bin/drone-agent             Up (healthy)   3000/tcp
+drone_drone-server_1   /bin/drone-server            Up             443/tcp, 80/tcp, 0.0.0.0:8080-&gt;8000/tcp, 0.0.0.0:32776-&gt;9000/tcp
+</code></pre>
+
+<p>对于失败的情况，通过查看日志来确认。</p>
+
+<blockquote>
+<p><strong>对于bitnami/mariadb的镜像有一个已知的<code>bug</code>，可以通过<code>chmod 777 mariadb</code>来改变目录权限来规避问题。或者自行替换官方的数据库镜像</strong></p>
+</blockquote>
+
+<p>最后，我们打开浏览器，输入地址：<code>http://$ip:$port</code>，登陆用户密码输入<code>gitea</code>注册的用户密码。<code>Drone</code>会自行同步<code>gitea</code>的项目名称过来，每个项目都有一个开关来控制代码编译。当打开后，我们在对应的项目中提交代码后，<code>Drone</code>会根据我们在<code>.drone.yml</code>中配置的构建步骤来执行，最终完成我们的代码构建以及其他后续的步骤。</p>
+
+<blockquote>
+<p><strong>具体的操作使用参考<a href="http://docs.drone.io/getting-started/">Drone使用</a>。</strong></p>
+</blockquote>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://192.168.200.20:8080/post/gitea/" data-toggle="tooltip" data-placement="top" title="Gitea的安装使用">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://192.168.200.20:8080/post/docker/" data-toggle="tooltip" data-placement="top" title="Docker的安装使用">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

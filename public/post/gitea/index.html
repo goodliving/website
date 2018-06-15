@@ -5,17 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>404 Page not found</title>
-  <meta property="og:title" content="404 Page not found" />
-  <meta name="twitter:title" content="404 Page not found" />
+  <title>Gitea的安装使用</title>
+  <meta property="og:title" content="Gitea的安装使用" />
+  <meta name="twitter:title" content="Gitea的安装使用" />
+  <meta name="description" content="概述 Gitea 是一个开源社区驱动的 Gogs的克隆, 是一个轻量级的代码托管解决方案，后端采用 Go 编写，采用 MIT 许可证。
+安装 对于gitea有多种方式，docker、二进制以及源码编译安装，以下介绍通过docker与docker-compose来快速安装。
+docker-compose.yml文件
+version: &#39;2&#39; services: web: image: gitea/gitea volumes: - ./data:/data ports: - &quot;3000:3000&quot; - &quot;10022:22&quot; depends_on: - db restart: always db: image: mariadb:10 restart: always environment: - MYSQL_ROOT_PASSWORD=123456 - MYSQL_DATABASE=gitea - MYSQL_USER=gitea - MYSQL_PASSWORD=123456 volumes: - ./db/:/var/lib/mysql  上面一些参数可以修改成自己需要的值，之后，通过docker-compose up -d来启动即可，如果出现下面的表示成功安装
+[root@nodejs-200 gogs]# docker-compose ps Name Command State Ports --------------------------------------------------------------------------------------------------- gogs_db_1 docker-entrypoint.sh mysqld Up 3306/tcp gogs_web_1 /usr/bin/entrypoint /bin/s .">
+  <meta property="og:description" content="概述 Gitea 是一个开源社区驱动的 Gogs的克隆, 是一个轻量级的代码托管解决方案，后端采用 Go 编写，采用 MIT 许可证。
+安装 对于gitea有多种方式，docker、二进制以及源码编译安装，以下介绍通过docker与docker-compose来快速安装。
+docker-compose.yml文件
+version: &#39;2&#39; services: web: image: gitea/gitea volumes: - ./data:/data ports: - &quot;3000:3000&quot; - &quot;10022:22&quot; depends_on: - db restart: always db: image: mariadb:10 restart: always environment: - MYSQL_ROOT_PASSWORD=123456 - MYSQL_DATABASE=gitea - MYSQL_USER=gitea - MYSQL_PASSWORD=123456 volumes: - ./db/:/var/lib/mysql  上面一些参数可以修改成自己需要的值，之后，通过docker-compose up -d来启动即可，如果出现下面的表示成功安装
+[root@nodejs-200 gogs]# docker-compose ps Name Command State Ports --------------------------------------------------------------------------------------------------- gogs_db_1 docker-entrypoint.sh mysqld Up 3306/tcp gogs_web_1 /usr/bin/entrypoint /bin/s .">
+  <meta name="twitter:description" content="概述 Gitea 是一个开源社区驱动的 Gogs的克隆, 是一个轻量级的代码托管解决方案，后端采用 Go 编写，采用 MIT 许可证。
+安装 对于gitea有多种方式，docker、二进制以及源码编译安装，以下介绍通过docker与docker-compose来快速安装。
+docker-compose.yml文件
+version: &#39;2&#39; services: web: image: …">
   <meta name="author" content=""/>
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://192.168.200.20:8080/" />
+  <meta property="og:url" content="http://192.168.200.20:8080/post/gitea/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cooper&#39;s Blog" />
 
   <meta name="generator" content="Hugo 0.41" />
-  <link rel="canonical" href="http://192.168.200.20:8080/" />
+  <link rel="canonical" href="http://192.168.200.20:8080/post/gitea/" />
   <link rel="alternate" href="http://192.168.200.20:8080/index.xml" type="application/rss+xml" title="Cooper&#39;s Blog">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -151,14 +165,146 @@ autocomplete('#aa-search-input',
   </div>
 </div>
     
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
     
-  <div role="main" class="container main-content">
-    <div class="text-center">
-      <h1>Whoops, this page doesn&#39;t exist. Move along. (404 error)</h1>
-      <br/>
-      <img src="http://192.168.200.20:8080//img/404-southpark.jpg" />
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Gitea的安装使用</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 15, 2018
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<h3 id="概述">概述</h3>
+
+<p>Gitea 是一个开源社区驱动的 <a href="http://gogs.io/">Gogs</a>的<a href="https://blog.gitea.io/2016/12/welcome-to-gitea/">克隆</a>, 是一个轻量级的代码托管解决方案，后端采用 <a href="https://golang.org/">Go</a> 编写，采用 <a href="https://github.com/go-gitea/gitea/blob/master/LICENSE">MIT</a> 许可证。</p>
+
+<h3 id="安装">安装</h3>
+
+<p>对于<code>gitea</code>有多种方式，<code>docker</code>、<a href="https://github.com/go-gitea/gitea">二进制</a>以及源码编译安装，以下介绍通过<code>docker</code>与<code>docker-compose</code>来快速安装。</p>
+
+<p><code>docker-compose.yml</code>文件</p>
+
+<pre><code class="language-shell">version: '2'
+services:
+  web:
+    image: gitea/gitea
+    volumes:
+      - ./data:/data
+    ports:
+      - &quot;3000:3000&quot;
+      - &quot;10022:22&quot;
+    depends_on:
+      - db
+    restart: always
+  db:
+    image: mariadb:10
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=gitea
+      - MYSQL_USER=gitea
+      - MYSQL_PASSWORD=123456
+    volumes:
+      - ./db/:/var/lib/mysql
+</code></pre>
+
+<p>上面一些参数可以修改成自己需要的值，之后，通过<code>docker-compose up -d</code>来启动即可，如果出现下面的表示成功安装</p>
+
+<pre><code class="language-shell">[root@nodejs-200 gogs]# docker-compose ps
+   Name                 Command               State                       Ports
+---------------------------------------------------------------------------------------------------
+gogs_db_1    docker-entrypoint.sh mysqld      Up      3306/tcp
+gogs_web_1   /usr/bin/entrypoint /bin/s ...   Up      0.0.0.0:10022-&gt;22/tcp, 0.0.0.0:3000-&gt;3000/tcp
+</code></pre>
+
+<p>失败的情况下查看日志来确认问题。</p>
+
+<blockquote>
+<p><strong>对于<code>docker</code>以及<code>docker-compose</code>的安装参考官方文档，默认已经安装完毕</strong></p>
+</blockquote>
+
+<p>最后，我们打开浏览器<code>gitea</code>的地址，地址为<code>http://$IP:$Port</code>，替换成自己机器的<code>ip</code>和设置的端口。我们会看到gitea的登陆界面，注册一个账号来使用，没有默认的用户密码。</p>
+
+<blockquote>
+<p><strong>默认第一个注册的用户权限属于管理员</strong></p>
+</blockquote>
+
+<h3 id="应用场景">应用场景</h3>
+
+<p><code>gitea</code>符合企业内部对于源码的管理，没有<code>gitlab</code>的重量级，同时没有自己的<code>CI</code>工具，但是，我们可以通过与<code>Drone</code>搭配，基于其丰富的插件来组成一个高速的<code>pipeline</code>，与<code>docker</code>以及<code>kubernetes</code>配合构建企业的<code>CI/CD</code>。</p>
+
+<h3 id="备份与恢复">备份与恢复</h3>
+
+<p>Gitea 已经实现了 <code>dump</code> 命令可以用来备份所有需要的文件到一个zip压缩文件。该压缩文件可以被用来进行数据恢复。</p>
+
+<blockquote>
+<p><strong>具体的使用可以查看<a href="https://docs.gitea.io/zh-cn/backup-and-restore/">gitea备份与恢复资料</a>。</strong></p>
+</blockquote>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://192.168.200.20:8080/post/hugo/" data-toggle="tooltip" data-placement="top" title="Hugo的安装使用介绍">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://192.168.200.20:8080/post/drone/" data-toggle="tooltip" data-placement="top" title="Drone的安装使用">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

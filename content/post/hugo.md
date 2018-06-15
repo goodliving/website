@@ -66,9 +66,9 @@ $ hugo server --theme=hyde --buildDrafts
 
 ```shell
 +++
-date = "2015-10-25T08:36:54-07:00"
-draft = false
-title = "about"
+date: "2015-10-25T08:36:54-07:00"
+draft: false
+title: "about"
 share: true
 +++
 hello world

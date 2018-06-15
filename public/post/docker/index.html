@@ -5,17 +5,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>404 Page not found</title>
-  <meta property="og:title" content="404 Page not found" />
-  <meta name="twitter:title" content="404 Page not found" />
+  <title>Docker的安装使用</title>
+  <meta property="og:title" content="Docker的安装使用" />
+  <meta name="twitter:title" content="Docker的安装使用" />
+  <meta name="description" content="概述 Docker 是一个开源的应用容器引擎，基于Go语言并遵从Apache2.0协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
+容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。
+ 具体的介绍可以通过Docker官方介绍
+ 安装 对于docker的安装有源码安装、二进制安装或者其他安装包工具如yum、apt等，以下通过在centos7上来安装docker
+yum更换阿里云源 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo  添加docker软件源 wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo  之后，运行yum makecache来以上repo信息，之后使用yum install docker-ce来默认安装最新版本的docker-ce版本。以上操作结束后没有报错，那么docker版本已经安装到机器上了，通过以下检查是否正确
+[root@nodejs-200 drone]# docker -v  会提示你docker没有启动，然后，我们需要配置一些相关配置项后启动docker：
+docker的volume类型 目前docker支持如下几种storage driver
+   technology storage driver name     OverlayFS overlay   AUFS aufs   Btrfs btrfs   Device Mapper devicemapper   VFS* vfs   ZFS zfs    对于以上几种的驱动类型的比较，参考博客Docker之几种storage-driver比较。">
+  <meta property="og:description" content="概述 Docker 是一个开源的应用容器引擎，基于Go语言并遵从Apache2.0协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
+容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。
+ 具体的介绍可以通过Docker官方介绍
+ 安装 对于docker的安装有源码安装、二进制安装或者其他安装包工具如yum、apt等，以下通过在centos7上来安装docker
+yum更换阿里云源 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo  添加docker软件源 wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo  之后，运行yum makecache来以上repo信息，之后使用yum install docker-ce来默认安装最新版本的docker-ce版本。以上操作结束后没有报错，那么docker版本已经安装到机器上了，通过以下检查是否正确
+[root@nodejs-200 drone]# docker -v  会提示你docker没有启动，然后，我们需要配置一些相关配置项后启动docker：
+docker的volume类型 目前docker支持如下几种storage driver
+   technology storage driver name     OverlayFS overlay   AUFS aufs   Btrfs btrfs   Device Mapper devicemapper   VFS* vfs   ZFS zfs    对于以上几种的驱动类型的比较，参考博客Docker之几种storage-driver比较。">
+  <meta name="twitter:description" content="概述 Docker 是一个开源的应用容器引擎，基于Go语言并遵从Apache2.0协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
+容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。
+ 具体的介绍可以通过Docker官方介绍
+ 安装 对 …">
   <meta name="author" content=""/>
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://192.168.200.20:8080/" />
+  <meta property="og:url" content="http://192.168.200.20:8080/post/docker/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cooper&#39;s Blog" />
 
   <meta name="generator" content="Hugo 0.41" />
-  <link rel="canonical" href="http://192.168.200.20:8080/" />
+  <link rel="canonical" href="http://192.168.200.20:8080/post/docker/" />
   <link rel="alternate" href="http://192.168.200.20:8080/index.xml" type="application/rss+xml" title="Cooper&#39;s Blog">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -151,14 +171,168 @@ autocomplete('#aa-search-input',
   </div>
 </div>
     
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
     
-  <div role="main" class="container main-content">
-    <div class="text-center">
-      <h1>Whoops, this page doesn&#39;t exist. Move along. (404 error)</h1>
-      <br/>
-      <img src="http://192.168.200.20:8080//img/404-southpark.jpg" />
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Docker的安装使用</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 15, 2018
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<h3 id="概述">概述</h3>
+
+<p><code>Docker</code> 是一个开源的应用容器引擎，基于<a href="http://www.runoob.com/go/go-tutorial.html">Go语言</a>并遵从Apache2.0协议开源。<code>Docker</code> 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 <code>Linux</code> 机器上，也可以实现虚拟化。</p>
+
+<p>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 <code>iPhone</code> 的 <code>app</code>）,更重要的是容器性能开销极低。</p>
+
+<blockquote>
+<p><strong>具体的介绍可以通过<a href="https://www.docker.com/">Docker官方介绍</a></strong></p>
+</blockquote>
+
+<h3 id="安装">安装</h3>
+
+<p>对于<code>docker</code>的安装有源码安装、二进制安装或者其他安装包工具如<code>yum</code>、<code>apt</code>等，以下通过在<code>centos7</code>上来安装<code>docker</code></p>
+
+<h5 id="yum-更换阿里云源"><code>yum</code>更换阿里云源</h5>
+
+<pre><code class="language-shell">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+</code></pre>
+
+<h5 id="添加docker软件源">添加docker软件源</h5>
+
+<pre><code class="language-shell">wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
+</code></pre>
+
+<p>之后，运行<code>yum makecache</code>来以上<code>repo</code>信息，之后使用<code>yum install docker-ce</code>来默认安装最新版本的<code>docker-ce</code>版本。以上操作结束后没有报错，那么<code>docker</code>版本已经安装到机器上了，通过以下检查是否正确</p>
+
+<pre><code class="language-shell">[root@nodejs-200 drone]# docker -v
+</code></pre>
+
+<p>会提示你<code>docker</code>没有启动，然后，我们需要配置一些相关配置项后启动<code>docker</code>：</p>
+
+<h5 id="docker-的-volume-类型"><code>docker</code>的<code>volume</code>类型</h5>
+
+<p>目前<code>docker</code>支持如下几种<code>storage driver</code></p>
+
+<table>
+<thead>
+<tr>
+<th>technology</th>
+<th>storage driver name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OverlayFS</td>
+<td>overlay</td>
+</tr>
+
+<tr>
+<td>AUFS</td>
+<td>aufs</td>
+</tr>
+
+<tr>
+<td>Btrfs</td>
+<td>btrfs</td>
+</tr>
+
+<tr>
+<td>Device Mapper</td>
+<td>devicemapper</td>
+</tr>
+
+<tr>
+<td>VFS*</td>
+<td>vfs</td>
+</tr>
+
+<tr>
+<td>ZFS</td>
+<td>zfs</td>
+</tr>
+</tbody>
+</table>
+
+<p>对于以上几种的驱动类型的比较，参考博客<a href="https://blog.csdn.net/vchy_zhao/article/details/70238690">Docker之几种storage-driver比较</a>。</p>
+
+<p>当<code>docker</code>安装完毕后，默认是<code>overlay</code>，不需要改动，我们需要添加的是镜像加速器地址，在阿里云官网注册账号，获取到一个字符串，在<code>/etc/docker</code>中新建一个<code>daemon.json</code>文件，将字符串添加到里面，如下</p>
+
+<pre><code class="language-shell">[root@master docker]# cat daemon.json
+{
+  &quot;registry-mirrors&quot;: [&quot;https://ba8vby2y.mirror.aliyuncs.com&quot;]
+}
+</code></pre>
+
+<p>之后，运行<code>systemctl start docker</code>，等待运行成功后，通过拉取一个<code>nginx</code>镜像来确认安装成功。</p>
+
+<pre><code class="language-shell">[root@master docker]# docker run -d --name nginx -p 80:80 nginx
+</code></pre>
+
+<p>最后，通过<code>curl http://localhost</code>来访问<code>nginx</code>的界面，确认安装成功。</p>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://192.168.200.20:8080/post/drone/" data-toggle="tooltip" data-placement="top" title="Drone的安装使用">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

@@ -2,22 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Cooper&#39;s Blog</title>
-    <link>http://192.168.200.20:18080/post/</link>
+    <link>http://192.168.200.20:8080/post/</link>
     <description>Recent content in Posts on Cooper&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Jun 2018 10:44:21 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 15:12:05 +0800</lastBuildDate>
     
-	<atom:link href="http://192.168.200.20:18080/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://192.168.200.20:8080/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>About</title>
-      <link>http://192.168.200.20:18080/post/about/</link>
+      <title>Docker的安装使用</title>
+      <link>http://192.168.200.20:8080/post/docker/</link>
+      <pubDate>Fri, 15 Jun 2018 15:12:05 +0800</pubDate>
+      
+      <guid>http://192.168.200.20:8080/post/docker/</guid>
+      <description>概述 Docker 是一个开源的应用容器引擎，基于Go语言并遵从Apache2.0协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
+容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。
+ 具体的介绍可以通过Docker官方介绍
+ 安装 对于docker的安装有源码安装、二进制安装或者其他安装包工具如yum、apt等，以下通过在centos7上来安装docker
+yum更换阿里云源 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo  添加docker软件源 wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo  之后，运行yum makecache来以上repo信息，之后使用yum install docker-ce来默认安装最新版本的docker-ce版本。以上操作结束后没有报错，那么docker版本已经安装到机器上了，通过以下检查是否正确
+[root@nodejs-200 drone]# docker -v  会提示你docker没有启动，然后，我们需要配置一些相关配置项后启动docker：
+docker的volume类型 目前docker支持如下几种storage driver
+   technology storage driver name     OverlayFS overlay   AUFS aufs   Btrfs btrfs   Device Mapper devicemapper   VFS* vfs   ZFS zfs    对于以上几种的驱动类型的比较，参考博客Docker之几种storage-driver比较。</description>
+    </item>
+    
+    <item>
+      <title>Drone的安装使用</title>
+      <link>http://192.168.200.20:8080/post/drone/</link>
+      <pubDate>Fri, 15 Jun 2018 14:23:58 +0800</pubDate>
+      
+      <guid>http://192.168.200.20:8080/post/drone/</guid>
+      <description>概述 Drone是一个轻量级，为容器构建的强大的持续交付平台。Drone通过Docker镜像的方式来实现打包和发布。
+安装 Drone的官方推荐使用docker-compose来安装。下面配置是官方的一个安装实例
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8 ports: - 80:8000 volumes: - /var/lib/drone:/var/lib/drone/ restart: always environment: - DRONE_OPEN=true - DRONE_HOST=${DRONE_HOST} - DRONE_GITHUB=true - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT} - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET} - DRONE_SECRET=${DRONE_SECRET} drone-agent: image: drone/drone:0.8 command: agent restart: always depends_on: - drone-server volumes: - /var/run/docker.sock:/var/run/docker.sock environment: - DRONE_SERVER=drone-server:9000 - DRONE_SECRET=${DRONE_SECRET}  Drone可以整合多个版本控制系统，使用环境变量来配置，如gitea，可以查看gitea配置来获取安装帮助。
+以下是个人的安装配置，其中使用mysql数据来代替默认的sqlite
+version: &#39;2&#39; services: drone-server: image: drone/drone:0.8.5 ports: - 8080:8000 - 9000 volumes: - /var/lib/drone:/var/lib/drone/ restart: always depends_on: - db environment: - DRONE_OPEN=true - DRONE_HOST=http://192.</description>
+    </item>
+    
+    <item>
+      <title>Gitea的安装使用</title>
+      <link>http://192.168.200.20:8080/post/gitea/</link>
+      <pubDate>Fri, 15 Jun 2018 14:23:07 +0800</pubDate>
+      
+      <guid>http://192.168.200.20:8080/post/gitea/</guid>
+      <description>概述 Gitea 是一个开源社区驱动的 Gogs的克隆, 是一个轻量级的代码托管解决方案，后端采用 Go 编写，采用 MIT 许可证。
+安装 对于gitea有多种方式，docker、二进制以及源码编译安装，以下介绍通过docker与docker-compose来快速安装。
+docker-compose.yml文件
+version: &#39;2&#39; services: web: image: gitea/gitea volumes: - ./data:/data ports: - &amp;quot;3000:3000&amp;quot; - &amp;quot;10022:22&amp;quot; depends_on: - db restart: always db: image: mariadb:10 restart: always environment: - MYSQL_ROOT_PASSWORD=123456 - MYSQL_DATABASE=gitea - MYSQL_USER=gitea - MYSQL_PASSWORD=123456 volumes: - ./db/:/var/lib/mysql  上面一些参数可以修改成自己需要的值，之后，通过docker-compose up -d来启动即可，如果出现下面的表示成功安装
+[root@nodejs-200 gogs]# docker-compose ps Name Command State Ports --------------------------------------------------------------------------------------------------- gogs_db_1 docker-entrypoint.sh mysqld Up 3306/tcp gogs_web_1 /usr/bin/entrypoint /bin/s .</description>
+    </item>
+    
+    <item>
+      <title>Hugo的安装使用介绍</title>
+      <link>http://192.168.200.20:8080/post/hugo/</link>
       <pubDate>Fri, 15 Jun 2018 10:44:21 +0800</pubDate>
       
-      <guid>http://192.168.200.20:18080/post/about/</guid>
-      <description>Hello world</description>
+      <guid>http://192.168.200.20:8080/post/hugo/</guid>
+      <description>概述 这是关于hugo的搭建过程记录。
+安装 对于hugo的安装，可以参考官方安装指南，在windows上的使用二进制文件安装过程，到Hugo Release下载windows操作系统的Hugo二进制文件，之后将hugo.exe加入到环境变量中即可。
+生成站点 使用Hugo快速生成站点，打开git命令行界面，切换要生成站点的目录下
+$ hugo new cooper-docs  之后，cd cooper-docs中会生成一系列目录。
+创建文章 创建一个about页面
+$ hugo new post/about.md  about.md自动生成到content/about.md，about.md内容如下
++++ date = &amp;quot;2015-10-25T08:36:54-07:00&amp;quot; draft = true title = &amp;quot;about&amp;quot; +++ 正文内容  安装皮肤 到皮肤列表挑选一个心仪的皮肤，比如Hyde，找到相关的Github地址，在站点的themes目录下将皮肤下载下来
+$ cd themes $ git clone https://github.com/spf13/hyde.git  运行Hugo 在你的站点根目录执行hugo命令进行调试
+$ hugo server --theme=hyde --buildDrafts  浏览器里打开：http://localhost:1313，这时你会发现啥都没有。。。
+这里，我们需要对于about.md的文件进行一些配置，最终配置如下
++++ date: &amp;quot;2015-10-25T08:36:54-07:00&amp;quot; draft: false title: &amp;quot;about&amp;quot; share: true +++ hello world  之后，重新运行hugo命令，再次打开浏览器，你会看到你网站有个about文章，正文内容是hello world。</description>
     </item>
     
   </channel>

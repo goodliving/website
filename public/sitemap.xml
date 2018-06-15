@@ -3,29 +3,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://192.168.200.20:18080/post/about/</loc>
+    <loc>http://192.168.200.20:8080/post/docker/</loc>
+    <lastmod>2018-06-15T15:12:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://192.168.200.20:8080/post/drone/</loc>
+    <lastmod>2018-06-15T14:23:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://192.168.200.20:8080/post/gitea/</loc>
+    <lastmod>2018-06-15T14:23:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://192.168.200.20:8080/post/hugo/</loc>
     <lastmod>2018-06-15T10:44:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://192.168.200.20:18080/categories/</loc>
+    <loc>http://192.168.200.20:8080/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://192.168.200.20:18080/</loc>
-    <lastmod>2018-06-15T10:44:21+08:00</lastmod>
+    <loc>http://192.168.200.20:8080/</loc>
+    <lastmod>2018-06-15T15:12:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://192.168.200.20:18080/post/</loc>
-    <lastmod>2018-06-15T10:44:21+08:00</lastmod>
+    <loc>http://192.168.200.20:8080/post/</loc>
+    <lastmod>2018-06-15T15:12:05+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://192.168.200.20:18080/tags/</loc>
+    <loc>http://192.168.200.20:8080/tags/</loc>
     <priority>0</priority>
   </url>
   

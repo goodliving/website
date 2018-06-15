@@ -5,17 +5,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>404 Page not found</title>
-  <meta property="og:title" content="404 Page not found" />
-  <meta name="twitter:title" content="404 Page not found" />
+  <title>Hugo的安装使用介绍</title>
+  <meta property="og:title" content="Hugo的安装使用介绍" />
+  <meta name="twitter:title" content="Hugo的安装使用介绍" />
+  <meta name="description" content="概述 这是关于hugo的搭建过程记录。
+安装 对于hugo的安装，可以参考官方安装指南，在windows上的使用二进制文件安装过程，到Hugo Release下载windows操作系统的Hugo二进制文件，之后将hugo.exe加入到环境变量中即可。
+生成站点 使用Hugo快速生成站点，打开git命令行界面，切换要生成站点的目录下
+$ hugo new cooper-docs  之后，cd cooper-docs中会生成一系列目录。
+创建文章 创建一个about页面
+$ hugo new post/about.md  about.md自动生成到content/about.md，about.md内容如下
+&#43;&#43;&#43; date = &quot;2015-10-25T08:36:54-07:00&quot; draft = true title = &quot;about&quot; &#43;&#43;&#43; 正文内容  安装皮肤 到皮肤列表挑选一个心仪的皮肤，比如Hyde，找到相关的Github地址，在站点的themes目录下将皮肤下载下来
+$ cd themes $ git clone https://github.com/spf13/hyde.git  运行Hugo 在你的站点根目录执行hugo命令进行调试
+$ hugo server --theme=hyde --buildDrafts  浏览器里打开：http://localhost:1313，这时你会发现啥都没有。。。
+这里，我们需要对于about.md的文件进行一些配置，最终配置如下
+&#43;&#43;&#43; date: &quot;2015-10-25T08:36:54-07:00&quot; draft: false title: &quot;about&quot; share: true &#43;&#43;&#43; hello world  之后，重新运行hugo命令，再次打开浏览器，你会看到你网站有个about文章，正文内容是hello world。">
+  <meta property="og:description" content="概述 这是关于hugo的搭建过程记录。
+安装 对于hugo的安装，可以参考官方安装指南，在windows上的使用二进制文件安装过程，到Hugo Release下载windows操作系统的Hugo二进制文件，之后将hugo.exe加入到环境变量中即可。
+生成站点 使用Hugo快速生成站点，打开git命令行界面，切换要生成站点的目录下
+$ hugo new cooper-docs  之后，cd cooper-docs中会生成一系列目录。
+创建文章 创建一个about页面
+$ hugo new post/about.md  about.md自动生成到content/about.md，about.md内容如下
+&#43;&#43;&#43; date = &quot;2015-10-25T08:36:54-07:00&quot; draft = true title = &quot;about&quot; &#43;&#43;&#43; 正文内容  安装皮肤 到皮肤列表挑选一个心仪的皮肤，比如Hyde，找到相关的Github地址，在站点的themes目录下将皮肤下载下来
+$ cd themes $ git clone https://github.com/spf13/hyde.git  运行Hugo 在你的站点根目录执行hugo命令进行调试
+$ hugo server --theme=hyde --buildDrafts  浏览器里打开：http://localhost:1313，这时你会发现啥都没有。。。
+这里，我们需要对于about.md的文件进行一些配置，最终配置如下
+&#43;&#43;&#43; date: &quot;2015-10-25T08:36:54-07:00&quot; draft: false title: &quot;about&quot; share: true &#43;&#43;&#43; hello world  之后，重新运行hugo命令，再次打开浏览器，你会看到你网站有个about文章，正文内容是hello world。">
+  <meta name="twitter:description" content="概述 这是关于hugo的搭建过程记录。
+安装 对于hugo的安装，可以参考官方安装指南，在windows上的使用二进制文件安装过程，到Hugo Release下载windows操作系统的Hugo二进制文件，之后将hugo.exe加入到环境变量中即可。
+生成站点 使用Hugo快速生成站点，打开git命令行界面，切换要生成站点的目录下
+$ hugo new cooper-docs  之后，cd …">
   <meta name="author" content=""/>
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://192.168.200.20:8080/" />
+  <meta property="og:url" content="http://192.168.200.20:8080/post/hugo/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cooper&#39;s Blog" />
 
   <meta name="generator" content="Hugo 0.41" />
-  <link rel="canonical" href="http://192.168.200.20:8080/" />
+  <link rel="canonical" href="http://192.168.200.20:8080/post/hugo/" />
   <link rel="alternate" href="http://192.168.200.20:8080/index.xml" type="application/rss+xml" title="Cooper&#39;s Blog">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -151,14 +177,152 @@ autocomplete('#aa-search-input',
   </div>
 </div>
     
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
     
-  <div role="main" class="container main-content">
-    <div class="text-center">
-      <h1>Whoops, this page doesn&#39;t exist. Move along. (404 error)</h1>
-      <br/>
-      <img src="http://192.168.200.20:8080//img/404-southpark.jpg" />
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Hugo的安装使用介绍</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 15, 2018
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<h3 id="概述">概述</h3>
+
+<p>这是关于<code>hugo</code>的搭建过程记录。</p>
+
+<h3 id="安装">安装</h3>
+
+<p>对于<code>hugo</code>的安装，可以参考<a href="http://www.gohugo.org/">官方安装指南</a>，在<code>windows</code>上的使用二进制文件安装过程，到<a href="https://github.com/gohugoio/hugo/releases">Hugo Release</a>下载<code>windows</code>操作系统的<code>Hugo</code>二进制文件，之后将<code>hugo.exe</code>加入到环境变量中即可。</p>
+
+<h3 id="生成站点">生成站点</h3>
+
+<p>使用<code>Hugo</code>快速生成站点，打开<code>git</code>命令行界面，切换要生成站点的目录下</p>
+
+<pre><code class="language-shell">$ hugo new cooper-docs
+</code></pre>
+
+<p>之后，<code>cd cooper-docs</code>中会生成一系列目录。</p>
+
+<h3 id="创建文章">创建文章</h3>
+
+<p>创建一个<code>about</code>页面</p>
+
+<pre><code class="language-shell">$ hugo new post/about.md
+</code></pre>
+
+<p><code>about.md</code>自动生成到<code>content/about.md</code>，<code>about.md</code>内容如下</p>
+
+<pre><code class="language-shell">+++
+date = &quot;2015-10-25T08:36:54-07:00&quot;
+draft = true
+title = &quot;about&quot;
+
++++
+
+正文内容
+</code></pre>
+
+<h3 id="安装皮肤">安装皮肤</h3>
+
+<p>到<a href="http://www.gohugo.org/theme/">皮肤列表</a>挑选一个心仪的皮肤，比如<code>Hyde</code>，找到相关的<code>Github</code>地址，在站点的<code>themes</code>目录下将皮肤下载下来</p>
+
+<pre><code class="language-shell">$ cd themes
+$ git clone https://github.com/spf13/hyde.git
+</code></pre>
+
+<h3 id="运行-hugo">运行<code>Hugo</code></h3>
+
+<p>在你的站点根目录执行<code>hugo</code>命令进行调试</p>
+
+<pre><code class="language-shell">$ hugo server --theme=hyde --buildDrafts
+</code></pre>
+
+<p>浏览器里打开：<code>http://localhost:1313</code>，这时你会发现啥都没有。。。</p>
+
+<p>这里，我们需要对于<code>about.md</code>的文件进行一些配置，最终配置如下</p>
+
+<pre><code class="language-shell">+++
+date: &quot;2015-10-25T08:36:54-07:00&quot;
+draft: false
+title: &quot;about&quot;
+share: true
++++
+hello world
+</code></pre>
+
+<p>之后，重新运行<code>hugo</code>命令，再次打开浏览器，你会看到你网站有个<code>about</code>文章，正文内容是<code>hello world</code>。</p>
+
+<h3 id="部署">部署</h3>
+
+<p>在站点根目录执行<code>Hugo</code>命令生成最终页面</p>
+
+<pre><code class="language-shell">$ hugo --theme=hyde --baseUrl=&quot;http://coderzh.github.io/&quot;
+</code></pre>
+
+<p>其中替换<code>baseUrl</code>的域名为你自己的即可。</p>
+
+<p>如果一切顺利，所有静态页面都会生成到<code>public</code>目录，该目录下就是我们所需要的静态文件，之后部署到一个<code>nginx</code>即可访问。</p>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="http://192.168.200.20:8080/post/gitea/" data-toggle="tooltip" data-placement="top" title="Gitea的安装使用">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

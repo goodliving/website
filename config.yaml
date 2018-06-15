@@ -1,0 +1,13 @@
+---
+baseurl: "/"
+DefaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+languageCode: "zh-cn"
+title: "Copper's Site"
+theme: "beautifulhugo"
+metaDataFormat: "yaml"
+algolia:
+  index: "cooper-blog"
+  key: "a116a046dcc9663bfeeff7a8d0fe516a"
+  appID: "SLBOXLAXMZ"
+---
